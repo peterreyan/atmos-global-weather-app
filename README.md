@@ -1,14 +1,16 @@
-# Atmos — Global Weather Dashboard
+# Atmos — Global Weather & Air Quality
 
-A responsive weather app built with React + Vite. Uses the free Open-Meteo APIs (no API key required).
+A responsive global weather dashboard built with React + Vite. It uses Open-Meteo's free APIs and does not require an API key.
 
 ## Features
-- Detects your location in the browser (with permission); falls back to London.
-- Search cities worldwide using Open-Meteo geocoding.
-- Current conditions and up to 7 days of forecast.
-- Historical daily weather for dates from 1940; the date picker starts five days back to account for reanalysis publication delay.
-- Temperature, precipitation and wind charts.
-- Celsius/Fahrenheit toggle, responsive layout and loading/error states.
+- Browser location detection (with permission), falling back to London.
+- Worldwide city search.
+- Live conditions, feels-like temperature, humidity, wind, visibility, pressure, cloud cover and UV.
+- 12-hour forecast and 7-day outlook.
+- Historical daily weather (coverage and availability vary by location; reanalysis data has a publication delay).
+- Current US AQI and European AQI, PM2.5, PM10, ozone and nitrogen dioxide, plus an AQI trend.
+- Weather-scene photography that changes with current weather conditions.
+- Celsius/Fahrenheit toggle and responsive mobile layout.
 
 ## Run locally
 ```bash
@@ -17,16 +19,17 @@ npm run dev
 ```
 
 ## Deploy to Vercel
-1. Create a GitHub repository and upload/push the contents of this folder.
-2. In Vercel choose **Add New → Project**, import the repository.
+1. Upload or push the contents of this folder to a GitHub repository.
+2. In Vercel select **Add New → Project** and import the repository.
 3. Framework preset: **Vite**. Build command: `npm run build`. Output directory: `dist`.
-4. Deploy. No environment variables or API keys are needed.
+4. Deploy. No environment variables or API keys are required.
 
 ## APIs
 - Geocoding: https://geocoding-api.open-meteo.com/v1/search
-- Forecast/current: https://api.open-meteo.com/v1/forecast
+- Forecast: https://api.open-meteo.com/v1/forecast
 - Historical archive: https://archive-api.open-meteo.com/v1/archive
+- Air quality: https://air-quality-api.open-meteo.com/v1/air-quality
 
-Browser geolocation requires the user's permission and a secure context (HTTPS; Vercel provides HTTPS). If permission is denied or unavailable, London is used as the starting location.
+Air quality values are modelled estimates and may not match a nearby monitoring station. AQI is shown using the US AQI scale. Review Open-Meteo's terms and attribution requirements before commercial use: https://open-meteo.com/en/terms
 
-Open-Meteo's free hosted service is intended for non-commercial use under its published terms. Review its terms and attribution requirements before commercial use: https://open-meteo.com/en/terms
+Weather scene images are loaded dynamically from Unsplash and require an internet connection.
